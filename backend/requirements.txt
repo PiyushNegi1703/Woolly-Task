@@ -4,3 +4,4 @@ sqlalchemy
 bcrypt
 PyJWT
 python-decouple
+pydantic[email]

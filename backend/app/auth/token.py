@@ -1,3 +1,4 @@
+from fastapi import HTTPException
 import time
 import jwt
 from decouple import config
@@ -21,7 +22,7 @@ def signJwt(userId : str):
 
 def decodeJWT(token : str):
     try:
-        decode_token = jwt.decode(token, JWT_SECRET, JWT_ALGORITHM)
+        decode_token = jwt.decode(token, JWT_SECRET, JWT_ALGORITHM, verify=True)
         return decode_token if decode_token["expires"] >= time.time() else None
     except:
-        {}
+        raise HTTPException(status_code=401, detail="Invalid Token")

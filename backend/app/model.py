@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field ,EmailStr
 
 class UserSchema(BaseModel):
-    userName : str = Field(default=None)
+    username : str = Field(default=None)
     email : EmailStr = Field(default=None)
     password : str = Field(default=None)
 
@@ -15,7 +15,7 @@ class UserSchema(BaseModel):
         }
 
 class UserLogin(BaseModel):
-    email : EmailStr = Field(default=None)
+    email_or_username : str = Field(default=None)
     password : str = Field(default=None)
 
     class Config:
@@ -25,4 +25,3 @@ class UserLogin(BaseModel):
                 "password": "Abc123#"
             }
         }
-
